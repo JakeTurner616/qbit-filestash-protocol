@@ -24,7 +24,4 @@ EXPOSE 8080
 
 # Start the qBittorrent daemon and the Flask app
 CMD qbittorrent-nox -d && python app.py 
-RUN export INSTANCE=https://files.serverboi.org 
-RUN export SHARE=4NSIb7U 
-RUN export KEY=uploaderapp0585719131 
 COPY fileinput.sh /fileinput.sh

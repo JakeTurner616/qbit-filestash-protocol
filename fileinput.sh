@@ -4,9 +4,11 @@
 src_dir="/app/downloads/"
 dst_dir="/app/downloads/proc/"
 
-# Set the API endpoint
+# Set the API endpoint here
 INSTANCE="https://files.serverboi.org"
+# Set the filestash share id here
 SHARE="4NSIb7U"
+# Set the API key here
 KEY="uploaderapp0585719131"
 
 # Create the destination directory if it doesn't exist

@@ -11,10 +11,7 @@ COPY requirements.txt /app
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get install curl -y
-RUN apt-get update && \
-    apt-get install dos2unix && \
-    apt-get clean
-RUN dos2unix /fileinput.sh
+RUN apt-get install dos2unix -y
 # Copy the current directory contents into the container at /app
 COPY config.txt /root/.config/qBittorrent/watched_folders.json
 COPY config0.txt /root/.config/qBittorrent/qBittorrent.conf

@@ -24,8 +24,7 @@ start docker run --name qbitpacker -p 5001:5001 -p 8080:8080 qbitpacker
 REM Wait for the Docker container to finish running
 timeout /T 5 /nobreak
 
-REM Terminate all Docker processes
-taskkill /f /im docker.exe 
+
 start "" http://localhost:5001
 REM Exit the terminal
 exit

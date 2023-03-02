@@ -14,7 +14,7 @@ if %errorlevel% equ 0 (
     timeout /T 5
     exit /b 1
 )
-
+mkdir -p mnt tmp downloads
 REM Build the Docker image
 docker build -t qbitpacker .
 

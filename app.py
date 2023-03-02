@@ -32,13 +32,82 @@ def index():
             return redirect(url_for('display_iframe'))
     return """
     <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    <p>%s</p>
+    <html>
+        <head>
+            <title>Web UI</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                h1 {
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                }
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                input[type=file] {
+                    margin-bottom: 10px;
+                }
+
+                input[type=submit] {
+                    background-color: #4CAF50;
+                    border: none;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin-top: 20px;
+                    cursor: pointer;
+                }
+
+                input[type=submit]:hover {
+                    background-color: #3e8e41;
+                }
+
+                .login {
+                    border: 1px solid #ccc;
+                    padding: 20px;
+                    margin-top: 20px;
+                }
+
+                .login p {
+                    margin: 0;
+                    padding: 0;
+                    margin-bottom: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Upload new .torrent</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                <label>Select a file to upload:</label>
+                <input type="file" name="file">
+                <input type="submit" value="Upload">
+            </form>
+            <div class="login">
+                <p>Sign in to start packing:</p>
+                <p>Username: guest</p>
+                <p>Password: adminadmin</p>
+                <form target="iframe1" action="https://guac.serverboi.org/guacamole/#/">
+                    <input type="submit" value="Launch Packer">
+                </form>
+            </div>
+            <p></p>
+            <iframe name="iframe1" src="" style="width:500px; height:500px; bottom:0; right:0;"></iframe>
+            <p><b>currently in memory:</b> %s</p>
+        </body>
+    </html>
     """ % "<br>".join(os.listdir(app.config['UPLOAD_FOLDER'],))
 
     
@@ -59,3 +128,4 @@ def display_iframe():
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001, debug=True)
+

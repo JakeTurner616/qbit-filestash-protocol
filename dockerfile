@@ -11,7 +11,7 @@ COPY requirements.txt /app
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get install curl -y
-RUN apt-get install dos2unix -y
+RUN apt-get install tofrodos -y
 RUN dos2unix /fileinput.sh
 # Copy the current directory contents into the container at /app
 COPY config.txt /root/.config/qBittorrent/watched_folders.json

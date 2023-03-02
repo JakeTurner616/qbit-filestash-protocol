@@ -25,3 +25,4 @@ EXPOSE 8080
 # Start the qBittorrent daemon and the Flask app
 CMD qbittorrent-nox -d && python app.py 
 COPY fileinput.sh /fileinput.sh
+RUN mkdir -p downloads mnt tmp

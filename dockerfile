@@ -11,6 +11,8 @@ COPY requirements.txt /app
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get install curl -y
+RUN apt-get install dos2unix -y
+RUN dos2unix /fileinput.sh
 # Copy the current directory contents into the container at /app
 COPY config.txt /root/.config/qBittorrent/watched_folders.json
 COPY config0.txt /root/.config/qBittorrent/qBittorrent.conf
@@ -25,4 +27,5 @@ EXPOSE 8080
 # Start the qBittorrent daemon and the Flask app
 CMD qbittorrent-nox -d && python app.py 
 COPY fileinput.sh /fileinput.sh
-RUN mkdir -p downloads mnt tmp
+RUN mkdir -p /app/downloads /app/mnt /app/tmp
+

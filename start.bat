@@ -11,7 +11,9 @@ REM Check if the Docker container is already built or running
 docker ps -a | findstr /i "\<qbitpacker\>" >nul 2>&1
 if %errorlevel% equ 0 (
     echo Docker container qbitpacker already exists or is running
+    
     start "" http://localhost:5001
+    timeout /t 5
     exit /b 1
 )
 mkdir -p mnt tmp downloads

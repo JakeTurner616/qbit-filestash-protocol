@@ -75,7 +75,7 @@ def index():
                     background-color: #3e8e41;
                 }
 
-                .login {
+                .login, .viewer {
                     border: 1px solid #ccc;
                     padding: 20px;
                     margin-top: 20px;
@@ -88,25 +88,44 @@ def index():
                 }
             </style>
         </head>
-        <body>
-            <h1>Upload new .torrent</h1>
-            <form action="" method="post" enctype="multipart/form-data">
-                <label>Select a file to upload:</label>
-                <input type="file" name="file">
-                <input type="submit" value="Upload">
-            </form>
-            <div class="login">
-                <p>Sign in to start packing:</p>
-                <p>Username: guest</p>
-                <p>Password: adminadmin</p>
-                <form target="iframe1" action="https://guac.serverboi.org/guacamole/#/">
-                    <input type="submit" value="Launch Packer">
-                </form>
-            </div>
-            <p></p>
-            <iframe name="iframe1" src="" style="width:500px; height:500px; bottom:0; right:0;"></iframe>
-            <p><b>currently in memory:</b> %s</p>
-        </body>
+<body>
+  <h1>Upload new .torrent</h1>
+  <form action="" method="post" enctype="multipart/form-data">
+    <label>Select a file to upload:</label>
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+  </form>
+  <div class="container">
+    <div class="login">
+      <p>Sign in to start packing:</p>
+      <p>Username: guest</p>
+      <p>Password: adminadmin</p>
+      <form target="iframe1" action="https://guac.serverboi.org/guacamole/#/">
+        <input type="submit" value="Launch Packer">
+      </form>
+    </div>
+    <div class="viewer">
+      <p>Viewer:</p>
+      <form target="iframe2" action="https://files.serverboi.org/s/video">
+        <input type="submit" value="viewer">
+      </form>
+    </div>
+  </div>
+  <p></p>
+  <iframe name="iframe1" src="" style="width:500px; height:500px; bottom:0; right:0;"></iframe>
+  <p><b>currently in memory:</b> %s</p>
+</body>
+
+<style>
+.container {
+  display: flex;
+}
+
+.login, .viewer {
+  margin-right: 20px;
+}
+</style>
+
     </html>
     """ % "<br>".join(os.listdir(app.config['UPLOAD_FOLDER'],))
 

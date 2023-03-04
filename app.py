@@ -1,31 +1,12 @@
 import os
-from flask import Flask, request, redirect, url_for
-from werkzeug.utils import secure_filename
-import os
+from flask import Flask, redirect, url_for
 from flask import send_from_directory
-UPLOAD_FOLDER = './mnt'
-ALLOWED_EXTENSIONS = set(['torrent'])
 
 app = Flask(__name__)
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-def clear_folder():
-    # Removes all files from the UPLOAD_FOLDER directory
-    for filename in os.listdir(app.config['UPLOAD_FOLDER']):
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-        except Exception as e:
-            print(e)
 
 @app.route("/", methods=['GET', 'POST'])
 def display_iframe():

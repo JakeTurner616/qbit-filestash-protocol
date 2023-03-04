@@ -1,11 +1,16 @@
 import os
 from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
-
+import os
+from flask import send_from_directory
 UPLOAD_FOLDER = './mnt'
 ALLOWED_EXTENSIONS = set(['torrent'])
 
 app = Flask(__name__)
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
@@ -34,7 +39,7 @@ def index():
     <!doctype html>
     <html>
         <head>
-            <title>Web UI</title>
+            <title>Uploader</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -59,7 +64,7 @@ def index():
                 }
 
                 input[type=submit] {
-                    background-color: #4CAF50;
+                    background-color: #f44336;
                     border: none;
                     color: white;
                     padding: 10px 20px;
@@ -72,13 +77,8 @@ def index():
                 }
 
                 input[type=submit]:hover {
-                    background-color: #3e8e41;
-                }
-
-                .login, .viewer {
-                    border: 1px solid #ccc;
-                    padding: 20px;
-                    margin-top: 20px;
+                    background-color: #d32f2f;
+                    text-decoration: underline;
                 }
 
                 .login p {
@@ -86,34 +86,36 @@ def index():
                     padding: 0;
                     margin-bottom: 10px;
                 }
+                #content, href {
+                max-width: max-content;
+                max-width: min-content;
+                padding: 100px;
+                border: 2px solid #ccc;
+                }
+                html,  body > center:nth-child(3) > a:nth-child(2) {
+                background-color: #303030;
+                color: #fff;
+                }
             </style>
         </head>
 <body>
-  <h1>Upload new .torrent</h1>
-  <form action="" method="post" enctype="multipart/form-data">
+<br></br>
+
+<center>
+<h1>.torrent upload</h1>
+<div id="content">
+  
+<form action="" method="post" enctype="multipart/form-data">
     <label>Select a file to upload:</label>
     <input type="file" name="file">
     <input type="submit" value="Upload">
   </form>
-  <div class="container">
-    <div class="login">
-      <p>Sign in to start packing:</p>
-      <p>Username: guest</p>
-      <p>Password: adminadmin</p>
-      <form target="iframe1" action="https://guac.serverboi.org/guacamole/#/">
-        <input type="submit" value="Launch Packer">
-      </form>
-    </div>
-    <div class="viewer">
-      <p>Viewer:</p>
-      <form target="iframe2" action="https://files.serverboi.org/s/video">
-        <input type="submit" value="viewer">
-      </form>
-    </div>
-  </div>
-  <p></p>
-  <iframe name="iframe1" src="" style="width:500px; height:500px; bottom:0; right:0;"></iframe>
+<br></br>
   <p><b>currently in memory:</b> %s</p>
+  </div>
+  
+<a href="/webui">torrent ui</a>
+  </center>
 </body>
 
 <style>
@@ -144,7 +146,6 @@ def display_iframe():
 </iframe>
 
     """
-    
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001, debug=True)
-

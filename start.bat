@@ -25,7 +25,7 @@ start docker run -d --restart unless-stopped --name qbitpacker -p 5001:5001 -p 8
 
 REM Wait for the Docker container to finish running
 
-timeout /t 3
+timeout /t 5
 start "" http://localhost:5001
 REM Exit the terminal
 exit

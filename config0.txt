@@ -1,6 +1,6 @@
 [AutoRun]
 enabled=true
-program=bash /fileinput.sh
+program=bash -x /fileinput.sh
 
 [BitTorrent]
 Session\CreateTorrentSubfolder=true
@@ -45,17 +45,21 @@ MailNotification\username=guest
 Queueing\MaxActiveDownloads=1
 Queueing\MaxActiveTorrents=99
 Queueing\MaxActiveUploads=1
+Scheduler\days=0
+Scheduler\end_time=@Variant(\0\0\0\xf\x4J\xa2\0)
+Scheduler\start_time=@Variant(\0\0\0\xf\x1\xb7t\0)
 WebUI\Address=*
-WebUI\AlternativeUIEnabled=false
+WebUI\AlternativeUIEnabled=true
 WebUI\AuthSubnetWhitelist=172.17.0.0/16
 WebUI\AuthSubnetWhitelistEnabled=true
 WebUI\CSRFProtection=false
 WebUI\ClickjackingProtection=false
 WebUI\HTTPS\Enabled=false
 WebUI\HostHeaderValidation=true
-WebUI\LocalHostAuth=true
+WebUI\LocalHostAuth=false
+WebUI\Password_ha1=@ByteArray(f6fdffe48c908deb0f4c3bd36c032e72)
 WebUI\Port=8080
-WebUI\RootFolder=
+WebUI\RootFolder=/app/qbit-matUI_Unix_1.16.4/
 WebUI\ServerDomains=*
 WebUI\UseUPnP=true
-WebUI\Username=guest
+WebUI\Username=admin

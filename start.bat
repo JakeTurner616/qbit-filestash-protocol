@@ -21,7 +21,8 @@ REM Build the Docker image
 docker build -t qbitpacker .
 
 REM Start a Docker container based on the image
-start docker run -d --restart unless-stopped --name qbitpacker -p 5001:5001 -p 8080:8080 qbitpacker &&
+start docker run -d --restart unless-stopped --name qbitpacker -p 5001:5001 -p 8080:8080 qbitpacker
+
 
 REM Wait for the Docker container to finish running
 

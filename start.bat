@@ -24,7 +24,7 @@ REM Start a Docker container based on the image
 start docker run -d --restart unless-stopped --name qbitpacker -p 5001:5001 -p 8080:8080 qbitpacker
 
 REM Wait for the Docker container to finish running
-timeout /T 5 /nobreak
+timeout /T 10 /nobreak
 
 
 start "" http://localhost:5001

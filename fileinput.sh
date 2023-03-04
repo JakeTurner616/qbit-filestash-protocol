@@ -44,6 +44,7 @@ while read -d $'\0' video_file; do
     curl "$INSTANCE/api/files/cat?share=$SHARE&key=$KEY&path=$file_name" -X POST --data-binary @"$dst_dir/$relative_path"
   fi
 done
+curl "$INSTANCE/api/files/cat?share=$SHARE&key=$KEY&path=complete.txt" -X POST --data-binary @"complete.txt"
 rm -rf /app/downloads/*
 
 
